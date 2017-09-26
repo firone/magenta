@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.lang.reflect.Field;
 
 import org.junit.Test;
-import org.magenta.FixtureFactory;
+import org.magenta.NewFixtureFactory;
 import org.magenta.Sequence;
 import org.magenta.core.sequence.ObjectSequenceMap;
 import org.mockito.Mockito;
@@ -19,7 +19,7 @@ public class SequenceFieldHydraterTest {
   @Test
   public void testMappingToAnObjectWithoutFields() throws IllegalArgumentException, IllegalAccessException {
     //setup fixture
-    FixtureFactory fixture = Mockito.mock(FixtureFactory.class);
+    NewFixtureFactory fixture = Mockito.mock(NewFixtureFactory.class);
 
     ObjectSequenceMap map = new ObjectSequenceMap(Maps.newHashMap(), 1);
 
@@ -34,7 +34,7 @@ public class SequenceFieldHydraterTest {
   public void hydrate_an_object_with_one_field_from_its_corresponding_sequence() throws IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException{
     //setup fixture
     String expected = "generatedFromASequence";
-    FixtureFactory fixture = Mockito.mock(FixtureFactory.class);
+    NewFixtureFactory fixture = Mockito.mock(NewFixtureFactory.class);
 
     Field aField = ClassWithOneField.class.getDeclaredField("aField");
     Sequence<String> sequence = new Sequence<String>(){

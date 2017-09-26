@@ -12,7 +12,7 @@ public class FixtureFactoryMaterializedFromUseCaseTest {
   public void testSimpleMaterialization() {
 
     //setup fixture
-    FixtureFactory fixture = Magenta.newFixture();
+    NewFixtureFactory fixture = Magenta.newFixture();
     fixture.newDataSet(String.class).transformed((Integer i)->i.toString()).materializedFrom(Integer.class);
     fixture.newDataSetOf(1,2,3,4,5);
 
@@ -26,7 +26,7 @@ public class FixtureFactoryMaterializedFromUseCaseTest {
   @Test
   public void testIndirectRestrictionEffect(){
     //setup fixture
-    FixtureFactory fixture = Magenta.newFixture();
+    NewFixtureFactory fixture = Magenta.newFixture();
     fixture.newDataSet(String.class).transformed((Integer i)->i.toString()).materializedFrom(Integer.class);
     fixture.newDataSetOf(1,2,3,4,5);
 

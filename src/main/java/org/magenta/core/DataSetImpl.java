@@ -95,7 +95,7 @@ public class DataSetImpl<D> implements DataSet<D> {
 
   @Override
   public Iterator<D> iterator() {
-    return new BoundedDataSupplierIterator<D>(this);
+    return new BoundedDataSupplierIterator<>(this);
   }
 
   @Override
@@ -127,13 +127,13 @@ public class DataSetImpl<D> implements DataSet<D> {
 
   @Override
   public DataSet<D> resize(int size) {
-    return new DataSetImpl<D>(new ResizedDataSupplierDecorator<D>(this.supplier,size), false);
+    return new DataSetImpl<>(new ResizedDataSupplierDecorator<>(this.supplier,size), false);
   }
 
   @Override
   public DataSet<D> filter(Predicate<? super D> filter) {
     checkBound();
-    return new DataSetImpl<D>(new FilteredDataSupplierDecorator<D>(this.supplier,filter), false);
+    return new DataSetImpl<>(new FilteredDataSupplierDecorator<>(this.supplier,filter), false);
   }
 
   @Override
@@ -143,7 +143,7 @@ public class DataSetImpl<D> implements DataSet<D> {
 
   @Override
   public <X> DataSet<X> transform(Function<? super D, X> function, TypeToken<X> transformedType) {
-    return new DataSetImpl<X>(new TransformedDataSupplierDecorator<D,X>(this.supplier,function, transformedType), false);
+    return new DataSetImpl<>(new TransformedDataSupplierDecorator<>(this.supplier,function, transformedType), false);
   }
 
   @Override
@@ -233,7 +233,7 @@ public class DataSetImpl<D> implements DataSet<D> {
 
   protected void checkBound(){
     if(isUnbounded()) {
-      throw new UnboundedDataSetException(String.format("The dataset %s is unbounded so it is not possible to select using any", this.getType()));
+      throw new UnboundedDataSetException(String.format("The dataset %s is unbounded so it is not possible to select using any or use a filter", this.getType()));
     }
   }
 

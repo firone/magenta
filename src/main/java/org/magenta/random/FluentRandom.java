@@ -5,12 +5,12 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
 
-import org.assertj.core.util.Lists;
 import org.magenta.DataSupplier;
 import org.magenta.core.data.supplier.StaticDataSupplier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.google.common.collect.Lists;
 import com.google.common.collect.Range;
 import com.google.common.reflect.TypeToken;
 
@@ -24,6 +24,7 @@ import com.google.common.reflect.TypeToken;
 public class FluentRandom {
 
   private static final int DEFAULT_DOUBLE_NUMBER_OF_DECIMAL_PLACES = 8;
+
 
   private static FluentRandom INSTANCE = new FluentRandom(Helper.initWithDefaultRandom());
 
@@ -171,7 +172,7 @@ public class FluentRandom {
 
     List<E> enums = Arrays.asList(clazz.getEnumConstants());
 
-    return new RandomList<>(INSTANCE.random, integers(),  new StaticDataSupplier<E>(enums, TypeToken.of(clazz)));
+    return new RandomList<>(INSTANCE.random, integers(),  new StaticDataSupplier<>(enums, TypeToken.of(clazz)));
   }
 
   /**
@@ -258,6 +259,17 @@ public class FluentRandom {
       return random;
 
     }
+  }
+
+  @Deprecated
+  public static FluentRandom get(Random random) {
+    INSTANCE = new FluentRandom(random);
+    return INSTANCE;
+  }
+
+  @Deprecated
+  public static FluentRandom singleton(){
+    return INSTANCE;
   }
 
 }

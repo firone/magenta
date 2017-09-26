@@ -12,11 +12,11 @@ import org.junit.runner.RunWith;
 import org.magenta.DataKey;
 import org.magenta.DataSet;
 import org.magenta.Fixture;
-import org.magenta.FixtureFactory;
+import org.magenta.NewFixtureFactory;
 import org.magenta.Magenta;
 import org.magenta.Sequence;
-import org.magenta.annotation.InjectDataSet;
-import org.magenta.annotation.InjectSequence;
+import org.magenta.annotations.InjectDataSet;
+import org.magenta.annotations.InjectSequence;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.google.common.base.Supplier;
@@ -63,7 +63,7 @@ public class GenerationStrategyFactoryTest {
     //setup fixtures
     Integer[] expected = new Integer[]{1,2,3,4,5,6};
 
-    FixtureFactory fixture = Magenta.newFixture();
+    NewFixtureFactory fixture = Magenta.newFixture();
 
     fixture.newDataSet(Integer.class).composedOf(1,2,3,4,5,6);
 
@@ -83,7 +83,7 @@ public class GenerationStrategyFactoryTest {
     //setup fixtures
     Integer[] expected = new Integer[]{1,2,3,4,5,6};
 
-    FixtureFactory fixture = Magenta.newFixture();
+    NewFixtureFactory fixture = Magenta.newFixture();
 
     fixture.newDataSet(Integer.class).composedOf(1,2,3,4,5,6);
 
@@ -108,7 +108,7 @@ public class GenerationStrategyFactoryTest {
     String[] expected = new String[] { "a1", "b1", "a2", "b2", "a3", "b3", "a4", "b4", "a5", "b5", "a6", "b6" };
 
 
-    FixtureFactory fixture = Magenta.newFixture();
+    NewFixtureFactory fixture = Magenta.newFixture();
 
     fixture.newDataSet(String.class).composedOf("a","b");
     fixture.newDataSet(Integer.class).composedOf(1,2,3,4,5,6);
@@ -133,7 +133,7 @@ public class GenerationStrategyFactoryTest {
 
 
 
-  private <D> List<D> readFrom(GenerationStrategy<D> strategy, int size, FixtureFactory fixture) {
+  private <D> List<D> readFrom(GenerationStrategy<D> strategy, int size, NewFixtureFactory fixture) {
     List<D> values = Lists.newArrayList();
     for(int i=0;i<size;i++){
       values.add(strategy.generate(fixture));

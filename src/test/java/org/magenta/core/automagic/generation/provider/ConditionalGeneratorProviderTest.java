@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.magenta.DataKey;
-import org.magenta.FixtureFactory;
+import org.magenta.NewFixtureFactory;
 import org.magenta.core.GenerationStrategy;
 import org.magenta.core.automagic.generation.DynamicGeneratorFactory;
 import org.mockito.Mock;
@@ -18,7 +18,7 @@ import com.google.common.base.Suppliers;
 public class ConditionalGeneratorProviderTest {
 
   @Mock
-  private FixtureFactory fixture;
+  private NewFixtureFactory fixture;
 
   @Mock
   private DynamicGeneratorFactory generatorFactory;

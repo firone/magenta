@@ -4,12 +4,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import org.assertj.core.util.Lists;
 import org.magenta.DataSet;
-import org.magenta.annotation.InjectDataSet;
+import org.magenta.annotations.InjectDataSet;
 import org.magenta.random.FluentRandom;
 
 import com.google.common.base.Supplier;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Range;
 
 public class ContractGenerator implements Supplier<Iterable<Contract>> {

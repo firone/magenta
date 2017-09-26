@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
 import org.magenta.DataKey;
-import org.magenta.FixtureFactory;
+import org.magenta.NewFixtureFactory;
 import org.magenta.Magenta;
 import org.magenta.core.GenerationStrategy;
 
@@ -15,7 +15,7 @@ public class DynamicGeneratorFactoryObjectUseCaseTest extends AbstractDynamicGen
   @Test
   public void testGenerationOfANonApplicableObject(){
     //setup fixture
-    FixtureFactory fixture = Magenta.newFixture();
+    NewFixtureFactory fixture = Magenta.newFixture();
     DynamicGeneratorFactory sut = buildDynamicGeneratorFactory();
 
     //exercise sut
@@ -30,7 +30,7 @@ public class DynamicGeneratorFactoryObjectUseCaseTest extends AbstractDynamicGen
   @Test
   public void testGenerationOfAValueObject(){
     //setup fixture
-    FixtureFactory fixture = Magenta.newFixture();
+    NewFixtureFactory fixture = Magenta.newFixture();
     DynamicGeneratorFactory sut = buildDynamicGeneratorFactory();
 
     //exercise sut

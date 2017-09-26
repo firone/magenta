@@ -2,8 +2,8 @@ package org.magenta.testing.domain.company;
 
 import org.magenta.DataSet;
 import org.magenta.Sequence;
-import org.magenta.annotation.InjectDataSet;
-import org.magenta.annotation.InjectSequence;
+import org.magenta.annotations.InjectDataSet;
+import org.magenta.annotations.InjectSequence;
 import org.magenta.random.FluentRandom;
 
 import com.google.common.base.Supplier;

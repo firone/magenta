@@ -10,7 +10,7 @@ import org.magenta.DataKey;
 import org.magenta.DataSet;
 import org.magenta.DataSupplier;
 import org.magenta.Fixture;
-import org.magenta.annotation.InjectDataSet;
+import org.magenta.annotations.InjectDataSet;
 import org.magenta.core.DataSetImpl;
 import org.magenta.core.DataSetSupplier;
 import org.magenta.core.Injector;

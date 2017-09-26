@@ -9,7 +9,7 @@ public class FixtureFactorySimpleUseCaseTest {
   @Test(expected = DataSetNotFoundException.class)
   public void testShouldThrowExceptionWhenTheDataSetIsNotFound() {
     // setup fixture
-    FixtureFactory fixture = createRootFixtureFactory();
+    NewFixtureFactory fixture = createRootNewFixtureFactory();
 
     // exercise sut
     fixture.dataset(Integer.class);
@@ -19,7 +19,7 @@ public class FixtureFactorySimpleUseCaseTest {
   @Test
   public void testKeys() {
     // setup fixture
-    FixtureFactory fixture = createRootFixtureFactory();
+    NewFixtureFactory fixture = createRootNewFixtureFactory();
     fixture.newDataSet(String.class).composedOf("a","b","c");
     fixture.newDataSet(Integer.class).composedOf(1,2,3,4);
 
@@ -31,12 +31,12 @@ public class FixtureFactorySimpleUseCaseTest {
   @Test
   public void testNewChild(){
     // setup fixture
-    FixtureFactory parent = createRootFixtureFactory();
+    NewFixtureFactory parent = createRootNewFixtureFactory();
     parent.newDataSet(String.class).composedOf("a","b","c");
     parent.newDataSet(Integer.class).composedOf(1,2,3,4);
 
     //exercise SUT
-    FixtureFactory child = parent.newChild();
+    NewFixtureFactory child = parent.newChild();
 
     //adding to child, so the parent should not have this dataset
     child.newDataSet(Double.class).composedOf(1.0,2.4,3.6);
@@ -58,7 +58,7 @@ public class FixtureFactorySimpleUseCaseTest {
 
   }
 
-  private FixtureFactory createRootFixtureFactory() {
+  private NewFixtureFactory createRootNewFixtureFactory() {
     return Magenta.newFixture();
   }
 }

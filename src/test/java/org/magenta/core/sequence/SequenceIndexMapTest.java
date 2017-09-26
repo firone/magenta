@@ -10,7 +10,8 @@ import java.util.Set;
 import org.junit.Test;
 import org.magenta.Sequence;
 
-import com.google.inject.internal.Maps;
+import com.google.common.collect.Maps;
+
 
 public class SequenceIndexMapTest {
 
@@ -23,13 +24,13 @@ public class SequenceIndexMapTest {
 
     Field field = SequenceIndexMapTest.class.getDeclaredField("aField");
     Sequence<?> expected = mock(Sequence.class);
-   
-    
+
+
     Map<Field,Sequence<?>> map = Maps.newHashMap();
     map.put(field,expected);
 
     ObjectSequenceMap sut = new ObjectSequenceMap(map,0);
-    
+
 
     //exercise sut
     Sequence<?> actual = sut.get(field);
@@ -46,7 +47,7 @@ public class SequenceIndexMapTest {
 
     Field field = SequenceIndexMapTest.class.getDeclaredField("aField");
     Sequence<?> expected = mock(Sequence.class);
-    
+
     Map<Field,Sequence<?>> map = Maps.newHashMap();
     map.put(field,expected);
 
@@ -60,7 +61,7 @@ public class SequenceIndexMapTest {
     assertThat(actual).containsExactly(field);
 
   }
-  
+
   @Test
   public void testGetCombinationCount() throws NoSuchFieldException, SecurityException{
 

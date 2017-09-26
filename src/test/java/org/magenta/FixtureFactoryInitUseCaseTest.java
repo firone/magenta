@@ -4,13 +4,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 
-import org.assertj.core.util.Lists;
 import org.junit.Test;
-import org.magenta.annotation.InjectDataSet;
+import org.magenta.annotations.InjectDataSet;
 import org.magenta.random.FluentRandom;
 
 import com.google.common.base.Supplier;
 import com.google.common.collect.FluentIterable;
+import com.google.common.collect.Lists;
 
 public class FixtureFactoryInitUseCaseTest {
 
@@ -18,7 +18,7 @@ public class FixtureFactoryInitUseCaseTest {
   public void testInit() {
 
     //setup
-    FixtureFactory fixture = Magenta.newFixture();
+    NewFixtureFactory fixture = Magenta.newFixture();
 
     int expectedSize = 7;
 
@@ -39,7 +39,7 @@ public class FixtureFactoryInitUseCaseTest {
   public void testInitWithSize() {
 
     //setup
-    FixtureFactory fixture = Magenta.newFixture();
+    NewFixtureFactory fixture = Magenta.newFixture();
     int expectedSize = 12;
 
     fixture.newDataSet(Owner.class).generatedBy(new OwnerGenerator(), 5);
@@ -59,7 +59,7 @@ public class FixtureFactoryInitUseCaseTest {
   public void testMultipleInitWithSize() {
 
     //setup
-    FixtureFactory fixture = Magenta.newFixture();
+    NewFixtureFactory fixture = Magenta.newFixture();
     int expectedSize = 12;
 
     fixture.newDataSet(Owner.class).generatedBy(new OwnerGenerator());

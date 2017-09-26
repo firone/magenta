@@ -1,5 +1,9 @@
 package org.magenta;
 
+import java.util.Arrays;
+
+import org.magenta.core.data.supplier.StaticDataSupplier;
+
 import com.google.common.reflect.TypeToken;
 
 public class DataKey<D> {
@@ -15,23 +19,28 @@ public final static String DEFAULT = "default";
   }
 
   public static <D> DataKey<D> of(Class<D> type){
-    return new DataKey<D>(TypeToken.of(type),DEFAULT, false);
+    return new DataKey<>(TypeToken.of(type),DEFAULT, false);
   }
 
   public static <D> DataKey<D> of(String qualifier, Class<D> type){
-    return new DataKey<D>(TypeToken.of(type), qualifier, false);
+    return new DataKey<>(TypeToken.of(type), qualifier, false);
   }
 
   public static <D> DataKey<D> of(TypeToken<D> type){
-    return new DataKey<D>(type,DEFAULT, false);
+    return new DataKey<>(type,DEFAULT, false);
   }
 
   public static <D> DataKey<D> of(String qualifier, TypeToken<D> type){
-    return new DataKey<D>(type,qualifier, false);
+    return new DataKey<>(type,qualifier, false);
   }
 
   public static <D> DataKey<D> of(String qualifier, TypeToken<D> type, boolean generalizable){
-    return new DataKey<D>(type,qualifier, true);
+    return new DataKey<>(type,qualifier, true);
+  }
+
+  @Deprecated
+  public static <D> DataKey<D> makeQualified(String qualifier, Class<D> type) {
+    return of(qualifier,type);
   }
 
   public TypeToken<D> getType() {
@@ -52,6 +61,11 @@ public final static String DEFAULT = "default";
 
   public boolean isGeneralizable() {
     return generalizable;
+  }
+
+  @Deprecated
+  public QualifiedDataSet<D> datasetOf(D...instances) {
+    return new QualifiedDataSet<>(this, new StaticDataSupplier<>(Arrays.asList(instances), getType()), true);
   }
 
   /* (non-Javadoc)
@@ -104,6 +118,10 @@ public final static String DEFAULT = "default";
     builder.append(getType()).append(':').append(getQualifier());
     return builder.toString();
   }
+
+
+
+
 
 
 

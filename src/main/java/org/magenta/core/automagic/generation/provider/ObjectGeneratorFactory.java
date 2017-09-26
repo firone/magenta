@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 
 import org.magenta.DataKey;
 import org.magenta.Fixture;
-import org.magenta.FixtureFactory;
+import org.magenta.NewFixtureFactory;
 import org.magenta.core.GenerationStrategy;
 import org.magenta.core.automagic.generation.DynamicGeneratorFactory;
 import org.magenta.core.automagic.generation.provider.fields.mapper.DataSetFieldHydrater;
@@ -39,7 +39,7 @@ public class ObjectGeneratorFactory implements DynamicGeneratorFactory {
   }
 
   @Override
-  public <D> Optional<ObjectGenerator<D>> buildGeneratorOf(DataKey<D> key, FixtureFactory fixture,
+  public <D> Optional<ObjectGenerator<D>> buildGeneratorOf(DataKey<D> key, NewFixtureFactory fixture,
       DynamicGeneratorFactory dynamicGeneratorFactory) {
 
     if (!isApplicable(key.getType())) {
@@ -54,7 +54,7 @@ public class ObjectGeneratorFactory implements DynamicGeneratorFactory {
         .build(CacheLoader.from(new ObjectSequenceMapBuilder(
             Iterables.filter(fieldSequenceDefinitions, d->!ignoredFields.contains(d.getField()) && d.getType()==FieldSequenceDefinition.Type.ATTRIBUTE))));
 
-    return Optional.of(new ObjectGenerator<D>(key.getType(), sequenceProvider, Arrays.asList(new SequenceFieldHydrater(sequenceProvider), new DataSetFieldHydrater())));
+    return Optional.of(new ObjectGenerator<>(key.getType(), sequenceProvider, Arrays.asList(new SequenceFieldHydrater(sequenceProvider), new DataSetFieldHydrater())));
   }
 
   private boolean isApplicable(TypeToken<?> type) {
@@ -74,7 +74,7 @@ public class ObjectGeneratorFactory implements DynamicGeneratorFactory {
     return definitions;
   }
 
-  private List<Field> buildGeneratorForEachRequiredField(FixtureFactory fixture, DynamicGeneratorFactory dynamicGeneratorFactory,
+  private List<Field> buildGeneratorForEachRequiredField(NewFixtureFactory fixture, DynamicGeneratorFactory dynamicGeneratorFactory,
       Iterable<FieldSequenceDefinition> definitions) {
     List<Field> toRemove = Lists.newArrayList();
     for (FieldSequenceDefinition d : definitions) {
@@ -91,7 +91,7 @@ public class ObjectGeneratorFactory implements DynamicGeneratorFactory {
     return toRemove;
   }
 
-  private <X> boolean addToFixtureIfPossible(DataKey<X> key, FixtureFactory fixture, DynamicGeneratorFactory dynamicGeneratorFactory) {
+  private <X> boolean addToFixtureIfPossible(DataKey<X> key, NewFixtureFactory fixture, DynamicGeneratorFactory dynamicGeneratorFactory) {
     if (key.getType().getRawType().isEnum()) {
       addNewEnumDataSet(fixture, key);
       return true;
@@ -107,7 +107,7 @@ public class ObjectGeneratorFactory implements DynamicGeneratorFactory {
     }
   }
 
-  private <T> void addNewEnumDataSet(FixtureFactory fixture, DataKey<T> key) {
+  private <T> void addNewEnumDataSet(NewFixtureFactory fixture, DataKey<T> key) {
     fixture.newDataSet(key).composedOf(((Class<T>) key.getType().getRawType()).getEnumConstants());
   }
 

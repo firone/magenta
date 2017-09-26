@@ -9,7 +9,8 @@ import java.util.List;
 import org.magenta.DataKey;
 import org.magenta.DataSet;
 import org.magenta.Fixture;
-import org.magenta.FixtureFactory;
+import org.magenta.NewFixtureFactory;
+import org.magenta.QualifiedDataSet;
 
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.LinkedHashMultimap;
@@ -57,7 +58,7 @@ public class RestrictionHelper {
   private static final Object EMPTY = new Object();
 
 
-  public static void createDatasets(FixtureFactory domain, Object first, Object... rest) {
+  public static void createDatasets(NewFixtureFactory domain, Object first, Object... rest) {
     configureDatasets(false, domain, first, rest);
   }
 
@@ -71,12 +72,12 @@ public class RestrictionHelper {
    *          an array of object
    */
 
-  public static void applyRestrictions(FixtureFactory domain, Object first, Object... rest) {
+  public static void applyRestrictions(NewFixtureFactory domain, Object first, Object... rest) {
     configureDatasets(true, domain, first, rest);
   }
 
   @SuppressWarnings({ "rawtypes", "unchecked" })
-  public static void configureDatasets( boolean keyMustExist, FixtureFactory domain, Object first, Object... rest) {
+  public static void configureDatasets( boolean keyMustExist, NewFixtureFactory domain, Object first, Object... rest) {
     Multimap<DataKey<?>, Object> multimap = LinkedHashMultimap.create();
 
     normalize(domain, Lists.asList(first, rest), multimap, keyMustExist);
@@ -98,10 +99,10 @@ public class RestrictionHelper {
   @VisibleForTesting
   static void normalize(Fixture fixture, Iterable<?> objects, Multimap<DataKey<?>, Object> multimap, boolean keyMustExist) {
     for (Object o : objects) {
-      /*if (o instanceof QualifiedDataSet) {
+      if (o instanceof QualifiedDataSet) {
         QualifiedDataSet<?> qDataSetItem = (QualifiedDataSet<?>) o;
         if (!qDataSetItem.isEmpty()) {
-          multimap.putAll(qDataSetItem.getKey(), qDataSetItem.get());
+          multimap.putAll(qDataSetItem.getKey(), qDataSetItem);
         } else {
 
           if (multimap.get(qDataSetItem.getKey())
@@ -112,7 +113,7 @@ public class RestrictionHelper {
 
         }
 
-      } else */if (o instanceof DataSet) {
+      } else if (o instanceof DataSet) {
         DataSet<?> dataSetItem = (DataSet<?>) o;
         DataKey<?> key = DataKey.of(dataSetItem.getType());
         if (!dataSetItem.isEmpty()) {

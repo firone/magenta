@@ -3,7 +3,7 @@ package org.magenta.core.automagic.generation;
 import java.util.Collection;
 
 import org.magenta.DataKey;
-import org.magenta.FixtureFactory;
+import org.magenta.NewFixtureFactory;
 import org.magenta.core.GenerationStrategy;
 
 import com.google.common.base.Optional;
@@ -18,7 +18,7 @@ public class CompositeGeneratorFactory implements DynamicGeneratorFactory {
   }
 
   @Override
-  public <D> Optional<? extends GenerationStrategy<D>> buildGeneratorOf(DataKey<D> type, FixtureFactory fixture, DynamicGeneratorFactory dynamicGeneratorFactory) {
+  public <D> Optional<? extends GenerationStrategy<D>> buildGeneratorOf(DataKey<D> type, NewFixtureFactory fixture, DynamicGeneratorFactory dynamicGeneratorFactory) {
 
     for(DynamicGeneratorFactory p:generatorProviders){
 

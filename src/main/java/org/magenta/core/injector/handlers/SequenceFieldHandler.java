@@ -10,7 +10,7 @@ import java.util.Set;
 import org.magenta.DataKey;
 import org.magenta.Fixture;
 import org.magenta.Sequence;
-import org.magenta.annotation.InjectSequence;
+import org.magenta.annotations.InjectSequence;
 import org.magenta.core.Injector;
 import org.magenta.core.injector.FieldInjectionHandler;
 import org.magenta.core.injector.FieldInjectorUtils;
@@ -36,7 +36,7 @@ public class SequenceFieldHandler extends AbstractFieldAnnotationHandler<InjectS
 
   @Override
   protected Class<InjectSequence> getAnnotationType(){
-    return org.magenta.annotation.InjectSequence.class;
+    return org.magenta.annotations.InjectSequence.class;
   }
 
   @Override

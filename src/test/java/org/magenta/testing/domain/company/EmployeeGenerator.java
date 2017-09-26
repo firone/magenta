@@ -1,7 +1,7 @@
 package org.magenta.testing.domain.company;
 
 import org.magenta.Sequence;
-import org.magenta.annotation.InjectSequence;
+import org.magenta.annotations.InjectSequence;
 
 import com.google.common.base.Supplier;
 

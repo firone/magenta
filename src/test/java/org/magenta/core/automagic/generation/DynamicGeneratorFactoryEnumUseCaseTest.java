@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.junit.Test;
 import org.magenta.DataKey;
-import org.magenta.FixtureFactory;
+import org.magenta.NewFixtureFactory;
 import org.magenta.Magenta;
 import org.magenta.core.GenerationStrategy;
 
@@ -18,7 +18,7 @@ public class DynamicGeneratorFactoryEnumUseCaseTest extends AbstractDynamicGener
   @Test
   public void testGenerationOfAValueObjectWithAnEnum() {
     // setup fixture
-    FixtureFactory fixture = Magenta.newFixture();
+    NewFixtureFactory fixture = Magenta.newFixture();
 
     DynamicGeneratorFactory sut = buildDynamicGeneratorFactory();
 

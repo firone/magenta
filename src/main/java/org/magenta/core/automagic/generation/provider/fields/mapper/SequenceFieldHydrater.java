@@ -7,7 +7,7 @@ import org.magenta.core.automagic.generation.provider.ObjectHydrater;
 import org.magenta.core.sequence.ObjectSequenceMap;
 
 import com.google.common.base.Function;
-import com.google.inject.internal.Preconditions;
+import com.google.common.base.Preconditions;
 
 public class SequenceFieldHydrater implements ObjectHydrater {
 

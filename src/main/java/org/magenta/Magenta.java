@@ -47,7 +47,7 @@ public class Magenta {
 
   private static final Supplier<EventBus> eventBus = Suppliers.memoize(()->new EventBus());
 
-  public static FixtureFactory newFixture() {
+  public static NewFixtureFactory newFixture() {
     return modules().fixtureFactory();
   }
 
@@ -67,16 +67,18 @@ public class Magenta {
 
   public static class Dependencies {
 
-    public FixtureFactory fixtureFactory() {
+    public NewFixtureFactory fixtureFactory() {
 
       setupRandomSeed();
 
       FixtureContext fixtureContext = fixtureContext();
       DynamicGeneratorFactory generatorFactory = generatorFactory();
-      return new FixtureFactory(null, generationStrategyFactory(fixtureContext), generatorFactory, fixtureContext);
+      return new NewFixtureFactory(null, generationStrategyFactory(fixtureContext), generatorFactory, fixtureContext);
     }
 
     private void setupRandomSeed() {
+
+      //TODO The seed is configured twice.. that is strange
 
       String configuredSeed = System.getProperty("magenta.random.seed");
       Long seed = null;

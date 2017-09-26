@@ -15,7 +15,8 @@ import org.mockito.Mockito;
 
 import com.google.common.base.Supplier;
 import com.google.common.base.Suppliers;
-import com.google.inject.internal.ImmutableMap;
+import com.google.common.collect.ImmutableMap;
+
 
 public class FieldInjectionChainProcessorTest {
 

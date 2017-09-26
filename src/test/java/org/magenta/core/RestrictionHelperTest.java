@@ -7,7 +7,7 @@ import java.util.Arrays;
 import org.junit.Test;
 import org.magenta.DataKey;
 import org.magenta.DataSet;
-import org.magenta.FixtureFactory;
+import org.magenta.NewFixtureFactory;
 import org.magenta.Magenta;
 import org.magenta.core.data.supplier.StaticDataSupplier;
 import org.magenta.testing.domain.company.Employee;
@@ -23,7 +23,7 @@ public class RestrictionHelperTest {
   public void testApplyRestrictions_with_non_existing_dataset(){
 
     //setup fixtures
-    FixtureFactory sut=createFixtureFactory();
+    NewFixtureFactory sut=createNewFixtureFactory();
 
 
     Employee candidate=createAnonymousEmployee("testApplyRestrictions_single_item");
@@ -40,7 +40,7 @@ public class RestrictionHelperTest {
   public void testApplyRestrictions_single_item(){
 
     //setup fixtures
-    FixtureFactory sut=createFixtureFactory();
+    NewFixtureFactory sut=createNewFixtureFactory();
     sut.newDataSet(Employee.class).generatedBy(new EmployeeGenerator());
 
     Employee candidate=createAnonymousEmployee("testApplyRestrictions_single_item");
@@ -56,7 +56,7 @@ public class RestrictionHelperTest {
   public void testApplyRestrictions_item_lists(){
 
     //setup fixtures
-    FixtureFactory sut=createFixtureFactory();
+    NewFixtureFactory sut=createNewFixtureFactory();
     sut.newDataSet(Employee.class).generatedBy(new EmployeeGenerator());
 
     Employee candidate1=createAnonymousEmployee("candidate1");
@@ -74,7 +74,7 @@ public class RestrictionHelperTest {
   public void testApplyRestrictions_item_array(){
 
     //setup fixtures
-    FixtureFactory sut=createFixtureFactory();
+    NewFixtureFactory sut=createNewFixtureFactory();
     sut.newDataSet(Employee.class).generatedBy(new EmployeeGenerator());
 
     Employee candidate1=createAnonymousEmployee("candidate1");
@@ -92,7 +92,7 @@ public class RestrictionHelperTest {
   public void testApplyRestrictions_mix_of_array_and_list(){
 
     //setup fixtures
-    FixtureFactory sut=createFixtureFactory();
+    NewFixtureFactory sut=createNewFixtureFactory();
     sut.newDataSet(Employee.class).generatedBy(new EmployeeGenerator());
 
     Employee candidate1=createAnonymousEmployee("candidate1");
@@ -113,7 +113,7 @@ public class RestrictionHelperTest {
   public void testApplyRestrictions_using_a_dataset(){
 
     //setup fixtures
-    FixtureFactory sut=createFixtureFactory();
+    NewFixtureFactory sut=createNewFixtureFactory();
     sut.newDataSet(Employee.class).generatedBy(new EmployeeGenerator());
 
     Employee candidate1=createAnonymousEmployee("candidate1");
@@ -134,12 +134,12 @@ public class RestrictionHelperTest {
   @Test
   public void testApplyRestrictions_fixture_datakeys_order_follow_restriction_order(){
     //setup fixtures
-    FixtureFactory parent=createFixtureFactory();
+    NewFixtureFactory parent=createNewFixtureFactory();
 
     parent.newDataSet(Integer.class).composedOf(1,2,3,4,5);
     parent.newDataSet(String.class).composedOf("a","b","c","d");
 
-    FixtureFactory sut = parent.newChild();
+    NewFixtureFactory sut = parent.newChild();
 
     //exercise sut
     RestrictionHelper.applyRestrictions(sut, 9, "z");
@@ -152,12 +152,12 @@ public class RestrictionHelperTest {
   @Test
   public void testApplyRestrictions_fixture_datakeys_order_follow_restriction_order_opposite_case(){
     //setup fixtures
-    FixtureFactory parent=createFixtureFactory();
+    NewFixtureFactory parent=createNewFixtureFactory();
 
     parent.newDataSet(Integer.class).composedOf(1,2,3,4,5);
     parent.newDataSet(String.class).composedOf("a","b","c","d");
 
-    FixtureFactory sut = parent.newChild();
+    NewFixtureFactory sut = parent.newChild();
 
     //exercise sut
     RestrictionHelper.applyRestrictions(sut, "z", 9);
@@ -171,7 +171,7 @@ public class RestrictionHelperTest {
 	public void testApplyRestrictions_using_a_qualified_dataset(){
 
 		//setup fixtures
-		FixtureFactory sut=createFixtureFactory();
+		NewFixtureFactory sut=createNewFixtureFactory();
 		sut.newDataSet(Employee.class).generatedBy(new EmployeeGenerator());
 
 		Employee candidate1=createAnonymousEmployee("candidate1");
@@ -195,7 +195,7 @@ public class RestrictionHelperTest {
 	  public void testApplyRestrictions_using_an_empty_dataset(){
 
 	    //setup fixtures
-	    FixtureFactory sut=createFixtureFactory();
+	    NewFixtureFactory sut=createNewFixtureFactory();
 	    sut.newDataSet(Employee.class).generatedBy(new EmployeeGenerator());
 
 	    DataKey<Employee> key = DataKey.makeDefault(Employee.class);
@@ -216,7 +216,7 @@ public class RestrictionHelperTest {
     return e;
   }
 
-  private FixtureFactory createFixtureFactory() {
+  private NewFixtureFactory createNewFixtureFactory() {
     return Magenta.newFixture();
   }
 }

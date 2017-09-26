@@ -13,8 +13,8 @@ import org.magenta.testing.domain.company.Employee;
 import org.magenta.testing.domain.company.EmployeeGenerator;
 import org.magenta.testing.domain.company.Occupation;
 
+import com.google.common.collect.Lists;
 import com.google.common.eventbus.Subscribe;
-import com.google.inject.internal.Lists;
 
 public class FixtureFactoryEventPostingTest {
 
@@ -34,7 +34,7 @@ public class FixtureFactoryEventPostingTest {
   public void testDataSetFoundPosting(){
 
     //setup
-    FixtureFactory fixtures = createRootFixtureFactory();
+    NewFixtureFactory fixtures = createRootNewFixtureFactory();
 
     fixtures.newDataSet(Integer.class).composedOf(1,2,3,4,5);
 
@@ -52,7 +52,7 @@ public class FixtureFactoryEventPostingTest {
   public void testDataGeneratedPosting(){
 
     //setup
-    FixtureFactory fixtures = createRootFixtureFactory();
+    NewFixtureFactory fixtures = createRootNewFixtureFactory();
 
     fixtures.newDataSet(Employee.class).generatedBy(new EmployeeGenerator());
     fixtures.newDataSet(Occupation.class).composedOf(Occupation.values());
@@ -71,7 +71,7 @@ public class FixtureFactoryEventPostingTest {
   public void testDataGeneratedPostingFromChild(){
 
     //setup
-    FixtureFactory fixtures = createRootFixtureFactory();
+    NewFixtureFactory fixtures = createRootNewFixtureFactory();
 
     fixtures.newDataSet(Employee.class).generatedBy(new EmployeeGenerator());
     fixtures.newDataSet(Occupation.class).composedOf(Occupation.values());
@@ -88,11 +88,10 @@ public class FixtureFactoryEventPostingTest {
 
   @Subscribe
   public void receive(Object event){
-    System.out.println(event);
     events.add(event);
   }
 
-  private FixtureFactory createRootFixtureFactory() {
+  private NewFixtureFactory createRootNewFixtureFactory() {
     return Magenta.newFixture();
   }
 

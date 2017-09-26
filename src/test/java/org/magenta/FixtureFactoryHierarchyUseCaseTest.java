@@ -12,11 +12,11 @@ import org.magenta.testing.domain.company.Occupation;
 
 public class FixtureFactoryHierarchyUseCaseTest {
 
-  private FixtureFactory fixtures;
+  private NewFixtureFactory fixtures;
 
   @Before
   public void setupFixtures(){
-    FixtureFactory fixtures = Magenta.newFixture();
+    NewFixtureFactory fixtures = Magenta.newFixture();
     fixtures.newDataSet(Occupation.class).composedOf(Occupation.ENGINEER, Occupation.MANAGEMENT, Occupation.TECHNICIAN, Occupation.TESTER);
     fixtures.newGenerator(Address.class).generatedBy(new AddressGenerator());
     fixtures.newDataSet(Employee.class).generatedBy(new EmployeeGenerator2());
@@ -28,10 +28,10 @@ public class FixtureFactoryHierarchyUseCaseTest {
   public void testSequencesAreIndependantFromAFixtureToAnother_each_fixture_have_their_own_sequence_starting_from_the_same_value(){
 
     //setup fixtures
-    FixtureFactory parent = fixtures;
-    FixtureFactory child1=fixtures.newChild();
-    FixtureFactory child2=fixtures.newChild();
-    FixtureFactory grandChild=child1.newChild();
+    NewFixtureFactory parent = fixtures;
+    NewFixtureFactory child1=fixtures.newChild();
+    NewFixtureFactory child2=fixtures.newChild();
+    NewFixtureFactory grandChild=child1.newChild();
 
     //exercise sut
    Employee engineer = parent.dataset(Employee.class).get(0);
@@ -51,8 +51,8 @@ public class FixtureFactoryHierarchyUseCaseTest {
   public void testSequencesAreIndependantFromAFixtureToAnother_test_alterning_get_should_not_change_sequence(){
 
     //setup fixtures
-    FixtureFactory parent = fixtures;
-    FixtureFactory child1=fixtures.newChild();
+    NewFixtureFactory parent = fixtures;
+    NewFixtureFactory child1=fixtures.newChild();
 
 
     //exercise sut

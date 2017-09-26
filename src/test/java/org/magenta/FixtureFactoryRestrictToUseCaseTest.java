@@ -18,7 +18,7 @@ public class FixtureFactoryRestrictToUseCaseTest {
 
   @Before
   public void setupFixtures(){
-    FixtureFactory fixtures = Magenta.newFixture();
+    NewFixtureFactory fixtures = Magenta.newFixture();
     fixtures.newDataSet(Occupation.class).composedOf(Occupation.ENGINEER, Occupation.MANAGEMENT, Occupation.TECHNICIAN, Occupation.TESTER);
     fixtures.newGenerator(Address.class).generatedBy(new AddressGenerator());
     fixtures.newDataSet(Employee.class).generatedBy(new EmployeeGenerator2());

@@ -1,4 +1,4 @@
-package org.magenta.annotation;
+package org.magenta.annotations;
 
 public @interface InjectIterable {
 

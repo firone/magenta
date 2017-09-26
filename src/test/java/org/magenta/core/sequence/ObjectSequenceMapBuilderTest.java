@@ -10,17 +10,18 @@ import java.util.Set;
 
 import org.junit.Test;
 import org.magenta.DataKey;
-import org.magenta.FixtureFactory;
+import org.magenta.NewFixtureFactory;
 import org.magenta.Magenta;
 import org.magenta.Sequence;
 
 import com.google.common.base.Supplier;
 import com.google.common.collect.Lists;
-import com.google.inject.internal.Sets;
+import com.google.common.collect.Sets;
+
 
 public class ObjectSequenceMapBuilderTest {
 
-  private FixtureFactory createRootFixtureFactory() {
+  private NewFixtureFactory createRootNewFixtureFactory() {
     return Magenta.newFixture();
   }
 
@@ -28,7 +29,7 @@ public class ObjectSequenceMapBuilderTest {
   public void testWhenNoFieldExistsThenNoSequencesAreProvided() {
 
     // setup fixture
-    FixtureFactory fixture = createRootFixtureFactory();
+    NewFixtureFactory fixture = createRootNewFixtureFactory();
 
     ObjectSequenceMapBuilder sut = new ObjectSequenceMapBuilder(Lists.newArrayList());
 
@@ -44,7 +45,7 @@ public class ObjectSequenceMapBuilderTest {
   public void test_when_no_field_exists_then_the_combination_count_is_infinite() {
 
     // setup fixture
-    FixtureFactory fixture = createRootFixtureFactory();
+    NewFixtureFactory fixture = createRootNewFixtureFactory();
 
     ObjectSequenceMapBuilder sut = new ObjectSequenceMapBuilder(Lists.newArrayList());
 
@@ -60,7 +61,7 @@ public class ObjectSequenceMapBuilderTest {
   public void test_when_only_one_sequence_exists_then_the_combination_count_is_the_size_of_this_sequence() throws NoSuchFieldException, SecurityException {
 
     // setup fixture
-    FixtureFactory fixture = createRootFixtureFactory();
+    NewFixtureFactory fixture = createRootNewFixtureFactory();
 
     int dataSetSize = 3;
 
@@ -90,7 +91,7 @@ public class ObjectSequenceMapBuilderTest {
   public void test_when_a_datakey_refer_to_a_non_constant_dataset_the_resulting_sequence_is_undeterministic() throws NoSuchFieldException, SecurityException {
 
     // setup fixture
-    FixtureFactory fixture = createRootFixtureFactory();
+    NewFixtureFactory fixture = createRootNewFixtureFactory();
 
     //setup a string generator
     Supplier<String> stringGenerator = mock(Supplier.class);
@@ -122,7 +123,7 @@ public class ObjectSequenceMapBuilderTest {
   @Test
   public void test_when_a_datakey_refer_to_a_constant_dataset_the_resulting_sequence_is_coordinated() throws NoSuchFieldException, SecurityException{
     // setup fixture
-    FixtureFactory fixture = createRootFixtureFactory();
+    NewFixtureFactory fixture = createRootNewFixtureFactory();
 
     //setup a string generator
     Supplier<String> stringGenerator = mock(Supplier.class);

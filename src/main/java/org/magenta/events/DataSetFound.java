@@ -1,8 +1,9 @@
 package org.magenta.events;
 
-import org.assertj.core.util.Preconditions;
 import org.magenta.DataKey;
 import org.magenta.Fixture;
+
+import com.google.common.base.Preconditions;
 
 public class DataSetFound {
 

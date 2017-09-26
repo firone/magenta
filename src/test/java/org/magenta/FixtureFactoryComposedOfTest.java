@@ -16,7 +16,7 @@ public class FixtureFactoryComposedOfTest {
 
     Integer[] expectedNumbers = new Integer[]{1,2,3,4,5,6,7};
     Iterable<Integer>   integers = Arrays.asList(expectedNumbers);
-    FixtureFactory fixtures = createRootFixtureFactory();
+    NewFixtureFactory fixtures = createRootNewFixtureFactory();
 
     DataKey<Integer> key = DataKey.of(Integer.class);
 
@@ -41,7 +41,7 @@ public class FixtureFactoryComposedOfTest {
     String[] expectedNumbers = new String[]{"1","2","3","4","5","6","7"};
     Iterable<Integer>   integers = Arrays.asList(1,2,3,4,5,6,7);
 
-    FixtureFactory fixtures = createRootFixtureFactory();
+    NewFixtureFactory fixtures = createRootNewFixtureFactory();
 
     DataKey<String> key = DataKey.of(String.class);
 
@@ -62,7 +62,7 @@ public class FixtureFactoryComposedOfTest {
   public void testImplicitComposition(){
 
     Integer[] expectedNumbers = new Integer[]{1,2,3,4,5,6,7};
-    FixtureFactory fixtures = createRootFixtureFactory();
+    NewFixtureFactory fixtures = createRootNewFixtureFactory();
 
     DataKey<Number> key = DataKey.of(Number.class);
 
@@ -87,7 +87,7 @@ public class FixtureFactoryComposedOfTest {
 
     List<Integer>[] expectedSets = new List[]{Arrays.asList(1,2,3), Arrays.asList(4,5,6), Arrays.asList(7,8,9)};
 
-    FixtureFactory fixtures = createRootFixtureFactory();
+    NewFixtureFactory fixtures = createRootNewFixtureFactory();
 
     DataKey<List<Integer>> key = DataKey.of(new TypeToken<List<Integer>>(){});
 
@@ -108,7 +108,7 @@ public class FixtureFactoryComposedOfTest {
 
   }
 
-  private FixtureFactory createRootFixtureFactory() {
+  private NewFixtureFactory createRootNewFixtureFactory() {
     return Magenta.newFixture();
   }
 }

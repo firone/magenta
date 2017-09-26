@@ -18,7 +18,7 @@ public class FixtureFactoryNewGeneratorGeneratedByTest {
 
     //setup fixtures
 
-    FixtureFactory fixtures = createRootFixtureFactory();
+    NewFixtureFactory fixtures = createRootNewFixtureFactory();
 
      fixtures.newGenerator(PhoneNumber.class).generatedBy(new PhoneNumberGenerator(), 2);
      DataSet<PhoneNumber> actual = fixtures.dataset(PhoneNumber.class);
@@ -37,7 +37,7 @@ public class FixtureFactoryNewGeneratorGeneratedByTest {
     assertThat(actual.getType()).isEqualTo(TypeToken.of(PhoneNumber.class));
   }
 
-  private FixtureFactory createRootFixtureFactory() {
+  private NewFixtureFactory createRootNewFixtureFactory() {
     return Magenta.newFixture();
   }
 }

@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.magenta.DataKey;
-import org.magenta.FixtureFactory;
+import org.magenta.NewFixtureFactory;
 import org.magenta.Magenta;
 import org.magenta.core.GenerationStrategy;
 
@@ -51,7 +51,7 @@ public class DynamicGeneratorFactoryPrimitiveUseCaseTest extends AbstractDynamic
   public void test_a_simple_generator() {
 
     // Setup fixture
-    FixtureFactory fixture = Magenta.newFixture();
+    NewFixtureFactory fixture = Magenta.newFixture();
     DynamicGeneratorFactory sut = buildDynamicGeneratorFactory();
 
     // exercise sut

@@ -8,7 +8,7 @@ import java.util.Collections;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.magenta.DataKey;
-import org.magenta.FixtureFactory;
+import org.magenta.NewFixtureFactory;
 import org.magenta.core.GenerationStrategy;
 import org.magenta.core.automagic.generation.provider.ConditionalGeneratorFactory;
 import org.mockito.Mock;
@@ -21,7 +21,7 @@ import com.google.common.base.Suppliers;
 public class CompositeGeneratorFactoryTest {
 
   @Mock
-  private FixtureFactory fixture;
+  private NewFixtureFactory fixture;
 
 
   @Test

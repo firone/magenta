@@ -14,7 +14,7 @@ public class FixtureFactoryAutoMagicallyGenerateObjectTest {
   @Test
   public void auto_magically_generate_simple_object(){
     //setup fixture
-    FixtureFactory sut = createRootFixtureFactory();
+    NewFixtureFactory sut = createRootNewFixtureFactory();
 
     //exercise sut
     sut.newDataSet(PhoneNumber.class).autoMagicallyGenerated(5);
@@ -29,7 +29,7 @@ public class FixtureFactoryAutoMagicallyGenerateObjectTest {
   @Test
   public void auto_magically_generate_object_graph(){
     //setup fixture
-    FixtureFactory sut = createRootFixtureFactory();
+    NewFixtureFactory sut = createRootNewFixtureFactory();
 
     //exercise sut
     sut.newDataSet(Employee.class).autoMagicallyGenerated(5);
@@ -47,7 +47,7 @@ public class FixtureFactoryAutoMagicallyGenerateObjectTest {
   @Test
   public void auto_magically_generate_set_for_attribtue(){
     //setup fixture
-    FixtureFactory sut = createRootFixtureFactory();
+    NewFixtureFactory sut = createRootNewFixtureFactory();
 
     //exercise sut
     sut.newDataSet(Employee.class).autoMagicallyGenerated(1);
@@ -58,7 +58,7 @@ public class FixtureFactoryAutoMagicallyGenerateObjectTest {
     assertThat(actual.getPhoneNumbers()).isNotEmpty();
   }
 
-  private FixtureFactory createRootFixtureFactory() {
+  private NewFixtureFactory createRootNewFixtureFactory() {
     return Magenta.newFixture();
   }
 }

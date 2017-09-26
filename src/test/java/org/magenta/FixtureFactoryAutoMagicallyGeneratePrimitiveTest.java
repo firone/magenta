@@ -11,7 +11,7 @@ public class FixtureFactoryAutoMagicallyGeneratePrimitiveTest {
   @Test
   public void auto_magically_generate_string(){
     //setup fixture
-    FixtureFactory sut = createRootFixtureFactory();
+    NewFixtureFactory sut = createRootNewFixtureFactory();
 
     //exercise sut
     sut.newDataSet(String.class).autoMagicallyGenerated(5);
@@ -27,7 +27,7 @@ public class FixtureFactoryAutoMagicallyGeneratePrimitiveTest {
   @Test
   public void auto_magically_generate_integer(){
     //setup fixture
-    FixtureFactory sut = createRootFixtureFactory();
+    NewFixtureFactory sut = createRootNewFixtureFactory();
 
     //exercise sut
     sut.newDataSet(Integer.class).autoMagicallyGenerated(5);
@@ -42,7 +42,7 @@ public class FixtureFactoryAutoMagicallyGeneratePrimitiveTest {
 
 
 
-  private FixtureFactory createRootFixtureFactory() {
+  private NewFixtureFactory createRootNewFixtureFactory() {
     return Magenta.newFixture();
   }
 }

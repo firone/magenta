@@ -10,9 +10,9 @@ import java.util.List;
 import org.junit.Test;
 import org.magenta.DataKey;
 import org.magenta.DataSet;
-import org.magenta.FixtureFactory;
+import org.magenta.NewFixtureFactory;
 import org.magenta.Magenta;
-import org.magenta.annotation.InjectDataSet;
+import org.magenta.annotations.InjectDataSet;
 import org.magenta.core.injector.extractors.HiearchicalFieldsExtractor;
 import org.mockito.Mockito;
 
@@ -25,7 +25,7 @@ public class DataSetFieldHandlerTest {
 
     //setup fixtures
 
-    FixtureFactory fixture = mock(FixtureFactory.class);
+    NewFixtureFactory fixture = mock(NewFixtureFactory.class);
 
    
     DummyGeneratorWithNoInjectedDataSet candidate = new DummyGeneratorWithNoInjectedDataSet();
@@ -46,7 +46,7 @@ public class DataSetFieldHandlerTest {
 
     //setup fixtures
 
-    FixtureFactory fixture = mock(FixtureFactory.class);
+    NewFixtureFactory fixture = mock(NewFixtureFactory.class);
 
     
     DummyGenerator candidate = new DummyGenerator();
@@ -70,7 +70,7 @@ public class DataSetFieldHandlerTest {
     //setup fixtures
     Integer[] expected = new Integer[]{1,2,3,4,5,6};
 
-    FixtureFactory fixture = Magenta.newFixture();
+    NewFixtureFactory fixture = Magenta.newFixture();
 
     fixture.newDataSet(Integer.class).composedOf(1,2,3,4,5,6);
 

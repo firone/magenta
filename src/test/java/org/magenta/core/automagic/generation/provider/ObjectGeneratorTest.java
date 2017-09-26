@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.magenta.DataKey;
 import org.magenta.Fixture;
-import org.magenta.FixtureFactory;
+import org.magenta.NewFixtureFactory;
 import org.magenta.Magenta;
 import org.magenta.core.automagic.generation.DataKeyDeterminedFromFieldTypeMappingFunction;
 import org.magenta.core.automagic.generation.DynamicGeneratorFactory;
@@ -34,7 +34,7 @@ public class ObjectGeneratorTest {
 
     //setup fixture
     DataKey<DummyObject> type = DataKey.of(DummyObject.class);
-    FixtureFactory fixture = Magenta.newFixture();
+    NewFixtureFactory fixture = Magenta.newFixture();
 
     ObjectGenerator<DummyObject> sut = factory.buildGeneratorOf(type, fixture, dynamicGeneratorFactoryMock).get();
 
@@ -51,7 +51,7 @@ public class ObjectGeneratorTest {
 
     //setup fixture
     DataKey<DummyObjectWithEnum> type = DataKey.of(DummyObjectWithEnum.class);
-    FixtureFactory fixture = Magenta.newFixture();
+    NewFixtureFactory fixture = Magenta.newFixture();
 
     fixture.newDataSet(DataKey.of(DummyObjectWithEnum.Color.class)).composedOf(DummyObjectWithEnum.Color.values());
     fixture.newDataSet(DataKey.of("org.magenta.core.automagic.generation.provider.ObjectGeneratorTest$DummyObjectWithEnum.color", DummyObjectWithEnum.Color.class)).composedOf(DummyObjectWithEnum.Color.RED);
@@ -77,7 +77,7 @@ public class ObjectGeneratorTest {
 
     //setup fixture
     DataKey<DummyObjectWithEnum> type = DataKey.of(DummyObjectWithEnum.class);
-    FixtureFactory fixture = Magenta.newFixture();
+    NewFixtureFactory fixture = Magenta.newFixture();
 
     fixture.newDataSet(DataKey.of(DummyObjectWithEnum.Color.class)).composedOf(DummyObjectWithEnum.Color.values());
     fixture.newDataSet(DataKey.of("org.magenta.core.automagic.generation.provider.ObjectGeneratorTest$DummyObjectWithEnum.color", DummyObjectWithEnum.Color.class)).composedOf(DummyObjectWithEnum.Color.RED);
